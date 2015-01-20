@@ -19,9 +19,19 @@ def count_in_list(list, item_to_count)
   #  1. A running total of the number of times you've seen the item
   #  2. A way to loop/iterate through the list
   #  3. A way to add to the running total as you see the item
+  count = 0
+  list.each do |item|
+    if item == item_to_count
+      count += 1
+    end
+  end
+  return count
 end
 
 if __FILE__ == $0
   # I'd advise putting some sanity checks here.
   # How else will you be sure your code does what you think it does?
+  p count_in_list([1,2,3], 1)  == 1
+  p count_in_list([1,1,1], 1)  == 3
+  p count_in_list(["a", "b", "c"], "a")  == 1
 end
