@@ -25,6 +25,13 @@ require 'nokogiri'
 
 def find_links(url)
   # This should return an array of all links at the given URL
+  arry = []
+  page = Nokogiri::HTML(open(url))
+  links = page.css("a")
+  links.each do |link|
+    arry.push(link.attribute("href"))
+  end
+  return arry
 end
 
 find_links("http://www.cnn.com/").each do |url|

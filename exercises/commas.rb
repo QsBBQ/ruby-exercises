@@ -20,12 +20,20 @@
 # insert the commas?  Which comma would you insert first?
 
 def commas(num)
+  s = num.to_s.reverse
+  num_comma = s.scan(/.{3}|.+/).join(',').reverse
+  return num_comma
 end
 
 if __FILE__ == $0
   # What are the common cases?  What are the corner cases?
   # Your sanity checks should look like
   #   p commas(input) == ...expected return value...
+  p commas(123) == "123"
+  p commas(1234)    == "1,234"
+  p commas(12345)   == "12,345"
+  p commas(1234567) == "1,234,567"
+  p commas(-1234567) == "-1,234,567"
 end
 
 # Hint #1

@@ -21,6 +21,15 @@
 #  array == [1,2,3,"waffles"]
 
 def pad_array(array, min_size, pad_with)
+  if min_size <= array.length
+    array = array
+  else
+    t = min_size - array.length
+    t.times do
+      array.push(pad_with)
+    end
+  end
+  return array
 end
 
 if __FILE__ == $0
@@ -40,4 +49,10 @@ if __FILE__ == $0
 
   # If min_size is 1 greater than the size of the input array
   #  then pad_array should add a single item to the end of the input array
+
+  p pad_array([1,2,3], 5, "waffles") == [1,2,3,"waffles","waffles"]
+  p pad_array([1,2,3], 4, "waffles") == [1,2,3,"waffles"]
+  p pad_array([1,2,3], 3, "waffles") == [1,2,3]
+  p pad_array(["a", "b", "c"], 3, "apricot") == ["a", "b", "c"]
+  p pad_array(["a", "b", "c"], 10, "apricot") == ["a", "b", "c", "apricot", "apricot", "apricot", "apricot", "apricot", "apricot", "apricot"]
 end

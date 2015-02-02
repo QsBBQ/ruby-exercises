@@ -28,6 +28,16 @@
 # inputs.  Don't worry if it can't.
 
 def fib(n)
+  numbers = []
+  (0..n).each do |n|
+    if n < 2
+      numbers = numbers.push(n)
+    else
+      new_num = numbers[-1] + numbers[-2]
+      numbers = numbers.push(new_num)
+    end
+  end
+  return numbers.last
 end
 
 if __FILE__ == $0
@@ -49,6 +59,9 @@ if __FILE__ == $0
   # This serves as a good input for the "common case"
   p fib(123) == 22698374052006863956975682
 
+  start_time = Time.now
+  p fib(1000) == 43466557686937456435688527675040625802564660517371780402481729089536555417949051890403879840079255169295922593080322634775209689623239873322471161642996440906533187938298969649928516003704476137795166849228875
+  p Time.now - start_time
   # Want to see if your fibonacci method can handle big inputs?
   # Uncomment this:
   #

@@ -14,10 +14,20 @@
 #
 
 def factorial(n)
+  if n == 0
+    1
+  else
+    n * factorial(n-1)
+  end
 end
 
 if __FILE__ == $0
   # What are the common cases?  What are the corner cases?
   # Your sanity checks should look like
   #   p factorial(input) == ...expected return value...
+  p factorial(2) == 2
+  p factorial(3) == 6
+  p factorial(4) == 24
+  p factorial(5) == 120
+  p factorial(10) == 3628800
 end

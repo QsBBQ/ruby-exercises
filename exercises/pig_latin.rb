@@ -15,6 +15,26 @@
 # pig_latin("happy") == "appyhay"
 
 def pig_latin(word)
+  alphabet = ("a".."z").to_a
+  vowels = ["a", "e", "i", "o", "u"]
+  consonants = alphabet - vowels
+  ay = "ay"
+  counter = 0
+  word.split("").each do |letter|
+    if consonants.include?(letter) and counter == 0  #Ok on the first letter moved the letter and added ay
+      word = word[1..-1] + letter + ay
+    elsif consonants.include?(letter) and counter > 0  #word with consonants and ay already
+      word = word[1..-3] + letter + ay
+    elsif vowels.include?(letter) and counter == 0 #For words starting with a vowel in first letter
+      word = word[0..-1] + ay
+      break
+    elsif vowels.include?(letter)  #the final break
+      word = word
+      break
+    end
+    counter += 1
+  end
+  return word
 end
 
 if __FILE__ == $0
@@ -25,4 +45,5 @@ if __FILE__ == $0
   p pig_latin("egg")   == "eggay"
   p pig_latin("inbox") == "inboxay"
   p pig_latin("eight") == "eightay"
+  p pig_latin("schtschurowski") == "urowskischtschay"  # Just wanted to be sure
 end

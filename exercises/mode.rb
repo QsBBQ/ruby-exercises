@@ -16,6 +16,20 @@
 # Break it down as clearly as you can in your own head first.
 
 def mode(array)
+  freq_hash = Hash.new(0)
+  array.each do |num|
+    freq_hash[num] += 1
+  end
+
+  max_so_far = 0
+  max_key = nil
+  freq_hash.each do |k, v|
+    if v > max_so_far
+      max_so_far = v
+      max_key = k
+    end
+  end
+  return max_key
 end
 
 if __FILE__ == $0
@@ -49,4 +63,5 @@ if __FILE__ == $0
   p mode(['a', 'a', 'a', 'b']) == 'a'
   p mode(['b', 'a', 'a', 'a']) == 'a'
   p mode(['a', 'b', 'a', 'a']) == 'a'
+  p mode(['bob','c','b', 'a', 'a', 'a']) == 'a'
 end
