@@ -22,14 +22,14 @@
 
 def pad_array(array, min_size, pad_with)
   if min_size <= array.length
-    array = array
+    result = array
   else
     t = min_size - array.length
     t.times do
-      array.push(pad_with)
+      result = array.push(pad_with)
     end
   end
-  return array
+  return result
 end
 
 if __FILE__ == $0

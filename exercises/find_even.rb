@@ -10,13 +10,14 @@
 #  find_even([10,10,10,11,11,11]) == [10,10,10]
 
 def find_even(array)
-  new_array = []
-  array.each do |num|
-    if num % 2 == 0
-      new_array.push(num)
-    end
-  end
-  new_array
+  # new_array = []
+  # array.each do |num|
+  #   if num % 2 == 0
+  #     new_array.push(num)
+  #   end
+  # end
+  # new_array
+  array.select { |num| num.even? }
 end
 
 # Note #1

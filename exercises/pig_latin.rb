@@ -20,12 +20,13 @@ def pig_latin(word)
   consonants = alphabet - vowels
   ay = "ay"
   counter = 0
+  #changes out "and" for &&
   word.split("").each do |letter|
-    if consonants.include?(letter) and counter == 0  #Ok on the first letter moved the letter and added ay
+    if consonants.include?(letter) && counter == 0  #Ok on the first letter moved the letter and added ay
       word = word[1..-1] + letter + ay
-    elsif consonants.include?(letter) and counter > 0  #word with consonants and ay already
+    elsif consonants.include?(letter) && counter > 0  #word with consonants and ay already
       word = word[1..-3] + letter + ay
-    elsif vowels.include?(letter) and counter == 0 #For words starting with a vowel in first letter
+    elsif vowels.include?(letter) && counter == 0 #For words starting with a vowel in first letter
       word = word[0..-1] + ay
       break
     elsif vowels.include?(letter)  #the final break

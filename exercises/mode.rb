@@ -23,13 +23,18 @@ def mode(array)
 
   max_so_far = 0
   max_key = nil
-  freq_hash.each do |k, v|
-    if v > max_so_far
-      max_so_far = v
-      max_key = k
-    end
-  end
-  return max_key
+  # freq_hash.each do |k, v|
+  #   if v > max_so_far
+  #     max_so_far = v
+  #     max_key = k
+  #   end
+  # end
+
+    #max_key = key
+  #return max_key
+  max_key = freq_hash.max_by { |key, value| value }
+  max_key[0]
+  #will have to come back got myself confused on how to use max_by.
 end
 
 if __FILE__ == $0

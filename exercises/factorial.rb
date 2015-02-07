@@ -14,11 +14,13 @@
 #
 
 def factorial(n)
-  if n == 0
-    1
-  else
-    n * factorial(n-1)
-  end
+  # if n == 0
+  #   1
+  # else
+  #   n * factorial(n-1)
+  # end
+  return 1 if n == 0
+  n * factorial(n-1)
 end
 
 if __FILE__ == $0

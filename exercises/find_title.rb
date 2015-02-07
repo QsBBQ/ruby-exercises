@@ -22,9 +22,12 @@ def find_title(url)
   #   2. Use one of the methods described below to extract the
   #      contents of the title tag.
   #   3. Return the contents of the title tag.
+  # page = Nokogiri::HTML(open(url))
+  # title = page.css('title')
+  # return title.text
+  #more idiomatic
   page = Nokogiri::HTML(open(url))
-  title = page.css('title')
-  return title.text
+  page.css("title").text
 end
 
 if __FILE__ == $0
