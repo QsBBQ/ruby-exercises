@@ -13,6 +13,20 @@
 # This should support weeks, days, hours, minutes, and seconds.
 
 def time_format(seconds)
+  if seconds < 60
+    seconds = seconds
+    time = "#{seconds}s"
+  elsif seconds < 3600
+    minutes = seconds/60
+    seconds = seconds % 60
+    time = "#{minutes}m #{seconds}s"
+  else
+    total_minutes = seconds/60
+    hours = total_minutes/60
+    minutes = seconds/60 % 60
+    seconds = seconds % 60
+    time = "#{hours}h #{minutes}m #{seconds}s"
+  end
 end
 
 if __FILE__ == $0
@@ -32,4 +46,5 @@ if __FILE__ == $0
   p time_format(61)   == "1m 1s"
 
   p time_format(3600) == "1h 0m 0s"
+  p time_format(3662) == "1h 1m 2s"
 end

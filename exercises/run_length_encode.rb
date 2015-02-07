@@ -42,6 +42,39 @@
 
 
 def run_length_encode(string)
+  characters = string.split("")
+  prev = ""
+  @encoded_string = ""
+  characters_hash = Hash.new(0)
+  count = 1
+  characters.each do |character|
+    if count == 1
+      characters_hash[character] += 1
+      prev = character
+      count += 1
+      puts prev
+    elsif character == prev
+      characters_hash[character] += 1
+      prev = character
+      count += 1
+      puts prev
+    else
+      characters_hash.each do |character, frequency|
+        @encoded_string += frequency.to_s + character
+      end
+    end
+
+    # if character != prev
+    #   characters_hash.each do |character, frequency|
+    #     @encoded_string += frequency.to_s + character
+    #   end
+    #   prev = character
+    # else
+    #   characters_hash[character] += 1
+    #   prev = character
+    # end
+  end
+  @encoded_string
 end
 
 # If you want to iterate over each character in a string, look at String#each_char
@@ -52,8 +85,9 @@ end
 # end
 
 if __FILE__ == $0
-  p run_length_encode("WWWWWWAAAAAAWWWWWWAAAAAABBBBBB") == "6W6A6W6A6B"
-  p run_length_encode("A") == "1A"
-  p run_length_encode("AB") == "1A1B"
-  p run_length_encode("Mississippi") == "1M1i2s1i2s1i2p1i"
+  # p run_length_encode("WWWWWWAAAAAAWWWWWWAAAAAABBBBBB") == "6W6A6W6A6B"
+  p run_length_encode("WWWWWWAAAAAAWWWWWWAAAAAABBBBBB")
+  # p run_length_encode("A") == "1A"
+  # p run_length_encode("AB") == "1A1B"
+  # p run_length_encode("Mississippi") == "1M1i2s1i2s1i2p1i"
 end

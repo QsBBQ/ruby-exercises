@@ -27,18 +27,32 @@
 #   etc.
 
 def bottles(start_number)
-  start_number.downto(1) do |i|
-    if i == 1
-      puts "#{i} bottle of beer on the wall, #{i} bottle of beer."
-      puts "Take one down, pass it around, no more bottles of beer on the wall!"
-    else
-      puts "#{i} bottles of beer on the wall, #{i} bottles of beer."
-      if (i-1) == 1
-        puts "Take one down, pass it around, #{i-1} bottle of beer on the wall!"
-      else
-        puts "Take one down, pass it around, #{i-1} bottles of beer on the wall!"
-      end
-    end
+  start_number.downto(1) do |num_bottles|
+    bottle_stanza(num_bottles)
+  end
+end
+
+def bottle_stanza(num_bottles)
+  #broke out the stanza per feedback
+  #Seems clunky how I did it with pluralize but gave it a crack.
+  p_or_s = pluralize(num_bottles, "bottle", "bottles")
+  common_line = "#{num_bottles} #{p_or_s} of beer on the wall, #{num_bottles} #{p_or_s} of beer."
+  if num_bottles == 1
+      puts common_line
+      puts "Take one down, pass it around, no more #{p_or_s} of beer on the wall!"
+  else
+    puts common_line
+    puts "Take one down, pass it around, #{num_bottles-1} #{p_or_s} of beer on the wall!"
+  end
+end
+
+def pluralize(count, singular, plural)
+  #Pretty cool didn't realize this singular plural existed.
+  #thinking....taking a crack
+  if count == 1
+    singular
+  else
+    plural
   end
 end
 
