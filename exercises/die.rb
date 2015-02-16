@@ -12,10 +12,15 @@ class Die
     @sides = 6
   end
 
+  def sides
+    @sides
+  end
+
   # This method should return a random number between 1 and the
   # value of the @sides instance variable (6, in this case).
   def roll
     # This is your job. :)
+    rand(1..self.sides)
   end
 end
 

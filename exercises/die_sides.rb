@@ -12,11 +12,17 @@ class Die
     # This is your job. :)
     # Hint: you'll need to set an instance variable so that your Die instance
     # can remember what value the user passed into Die.new
+    @sides = sides
+  end
+
+  def sides
+    @sides
   end
 
   def roll
     # This is your job. :)
     # Hint: You'll need to reference an instance variable in this method.
+    rand(1..self.sides)
   end
 end
 
@@ -29,4 +35,7 @@ if __FILE__ == $0
   # die_10.roll should return a random number between 1 and 10 (inclusive)
   # die_20.roll should return a random number between 1 and 20 (inclusive)
   # die_6.roll should return a random number between 1 and 6 (inclusive)
+  puts "#{die_10.roll} should return a random number between 1 and 10 (inclusive)"
+  puts "#{die_20.roll} should return a random number between 1 and 20 (inclusive)"
+  puts "#{die_6.roll} should return a random number between 1 and 6 (inclusive)"
 end
