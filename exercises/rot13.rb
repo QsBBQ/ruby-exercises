@@ -21,6 +21,7 @@
 
 
 def rot13(string)
+  string_encrypt = string.tr("a-zA-Z", "n-za-mN-ZA-M")
 end
 
 if __FILE__ == $0
